@@ -1,0 +1,105 @@
+/* Tailwind CSS v4 entry point. Colours and fonts mirror the supplied index.html design. */
+@import "tailwindcss" source(none);
+
+/* Only scan project code, never node_modules or the virtualenv. */
+@source "../../core";
+@source "../../home";
+@source "../../news";
+@source "../../events";
+@source "../../gallery";
+@source "../../contact";
+@source "../../search";
+@source "../../glorysite/templates";
+@source "../static/theme/js";
+
+/* Classes chosen at runtime from editor choices live in Python constants (core/blocks.py),
+   which is scanned above. Anything built from a variable must be listed here instead. */
+@source inline("{bg,text}-{navy,gold,mist,white,ink}");
+
+@theme {
+  --color-ink: #111111;
+  --color-navy: #1d157c;
+  --color-periwinkle: #5b7bce;
+  /* Slightly deeper than periwinkle so small white text meets 4.5:1 contrast. */
+  --color-periwinkle-deep: #4a67b8;
+  --color-steel: #3c5494;
+  --color-gold: #fbb911;
+  --color-mist: #e3ebff;
+
+  --font-condensed: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-inter: "Inter Variable", Inter, system-ui, sans-serif;
+  --font-signature: "Mrs Saint Delafield", "Brush Script MT", cursive;
+}
+
+@font-face {
+  font-family: "Barlow Condensed";
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/barlow-condensed-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter Variable";
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/inter-latin-wght-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Mrs Saint Delafield";
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/mrs-saint-delafield-latin-400-normal.woff2") format("woff2");
+}
+
+@layer base {
+  html {
+    @apply motion-safe:scroll-smooth;
+    scroll-padding-top: 1rem;
+  }
+  body {
+    @apply bg-white text-ink antialiased;
+  }
+  /* Two-tone focus ring: visible on light, dark and blue backgrounds. */
+  :focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 0;
+    box-shadow: 0 0 0 5px var(--color-navy);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Styles for editor-written rich text. */
+  .rich-text {
+    @apply text-[19px] leading-[1.7] tracking-[.02em];
+  }
+  .rich-text > * + * {
+    @apply mt-5;
+  }
+  .rich-text h3 {
+    @apply mt-10 text-2xl font-semibold;
+  }
+  .rich-text h4 {
+    @apply mt-8 text-xl font-semibold;
+  }
+  .rich-text a {
+    @apply underline decoration-2 underline-offset-4 hover:decoration-gold;
+  }
+  .rich-text ul {
+    @apply list-disc space-y-2 pl-6;
+  }
+  .rich-text ol {
+    @apply list-decimal space-y-2 pl-6;
+  }
+  .rich-text hr {
+    @apply my-10 border-current/30;
+  }
+  .rich-text-inline a {
+    @apply underline underline-offset-4;
+  }
+}

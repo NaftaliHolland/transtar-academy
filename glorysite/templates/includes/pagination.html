@@ -1,0 +1,11 @@
+{% load core_tags %}
+{% if page_obj.paginator.num_pages > 1 %}
+  <nav class="mt-14 flex flex-wrap items-center justify-center gap-2 text-sm font-semibold" aria-label="Pagination">
+    {% if page_obj.has_previous %}<a href="{% page_url page_obj.previous_page_number %}" rel="prev" class="bg-navy px-4 py-2 text-white hover:bg-steel">Previous</a>{% endif %}
+    {% for n in page_obj.paginator.page_range %}
+      {% if n == page_obj.number %}<span class="bg-gold px-4 py-2 text-ink" aria-current="page"><span class="sr-only">Page </span>{{ n }}</span>
+      {% else %}<a href="{% page_url n %}" class="bg-mist px-4 py-2 hover:bg-gold"><span class="sr-only">Page </span>{{ n }}</a>{% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}<a href="{% page_url page_obj.next_page_number %}" rel="next" class="bg-navy px-4 py-2 text-white hover:bg-steel">Next</a>{% endif %}
+  </nav>
+{% endif %}

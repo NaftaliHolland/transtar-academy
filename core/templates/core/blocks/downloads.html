@@ -1,0 +1,13 @@
+<section class="mx-auto max-w-4xl px-6 py-16 md:py-20">
+  <h2 class="mb-8 text-3xl font-semibold md:text-4xl">{{ value.heading }}</h2>
+  <ul class="divide-y divide-ink/15 border-y border-ink/15">
+    {% for item in value.items %}
+      <li>
+        <a href="{{ item.document.url }}" class="flex items-center justify-between gap-6 py-5 hover:bg-mist">
+          <span><span class="block text-lg font-semibold">{{ item.title|default:item.document.title }}</span>{% if item.description %}<span class="block font-light">{{ item.description }}</span>{% endif %}</span>
+          <span class="shrink-0 text-sm font-medium uppercase tracking-[.1em]">Download {{ item.document.file_extension|upper }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</section>

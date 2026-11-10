@@ -1,0 +1,19 @@
+{% load wagtailimages_tags %}
+<section class="mx-auto grid max-w-7xl items-stretch lg:grid-cols-[1.1fr_.9fr]">
+  <div class="space-y-8 px-6 py-16 lg:px-0 lg:pr-16">
+    {% for item in value.items %}
+      <article class="grid gap-6 {% if item.icon %}sm:grid-cols-[120px_1fr]{% endif %} sm:items-center">
+        {% if item.icon %}{% image item.icon width-240 class="size-24 object-contain sm:size-[120px]" %}{% endif %}
+        <div>
+          <h2 class="mb-2 text-xl font-bold">{{ item.heading }}</h2>
+          <p class="text-[19px] font-light leading-[1.54] tracking-[.02em]">{{ item.text }}</p>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+  <div class="flex flex-col justify-center gap-7 bg-navy px-8 py-16 text-white lg:px-14">
+    <h2 class="text-2xl font-semibold">{{ value.panel_heading }}</h2>
+    <p class="text-[19px] leading-[1.54] tracking-[.02em]">{{ value.panel_text }}</p>
+    {% if value.panel_link.has_link %}<a href="{{ value.panel_link.href }}" class="text-sm font-medium uppercase tracking-[.08em] underline-offset-4 hover:text-gold hover:underline">{{ value.panel_link.text }} &gt;&gt;</a>{% endif %}
+  </div>
+</section>

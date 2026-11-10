@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Glory High School — high school redefined for success." />
+    <title>Glory High School</title>
+    <!-- <link rel="stylesheet" href="/src/index.css" /> -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-white text-[#111] antialiased">
+    <header id="home" class="relative min-h-[760px] bg-black text-white">
+      <img src="/assets/99835.png" alt="Glory High School campus" class="absolute inset-0 h-full w-full object-cover" />
+      <div class="absolute inset-0 bg-black/25"></div>
+
+      <div class="relative z-20 flex h-10 items-center justify-between bg-[#111] px-5 text-xs md:px-[5vw]">
+        <div class="flex items-center gap-4">
+          <a href="#" aria-label="Facebook"><img src="/assets/b989f.svg" alt="" class="size-[18px]" /></a>
+          <a href="#" aria-label="Twitter"><img src="/assets/aaa2a.svg" alt="" class="h-[18px] w-[21px]" /></a>
+          <a href="#" aria-label="Instagram"><img src="/assets/5b111.svg" alt="" class="size-[18px]" /></a>
+          <a href="#" aria-label="LinkedIn"><img src="/assets/adf31.svg" alt="" class="size-[18px]" /></a>
+          <a href="#" aria-label="YouTube"><img src="/assets/54dca.svg" alt="" class="size-[18px]" /></a>
+        </div>
+        <div class="flex gap-7"><a href="#team">Alumni</a><a href="#contact">Contact</a></div>
+      </div>
+
+      <nav class="relative z-20 mx-auto flex max-w-[1740px] items-center justify-between px-5 py-7 md:px-[5vw]" aria-label="Main navigation">
+        <a href="#home" class="flex items-center gap-4" aria-label="Glory High School home">
+          <img src="/assets/f29da.svg" alt="" class="h-16 w-auto" />
+          <img src="/assets/61d06.svg" alt="Glory High School" class="h-14 w-auto" />
+        </a>
+        <button id="menuButton" class="rounded border border-white/50 px-3 py-2 text-sm uppercase tracking-widest lg:hidden" aria-expanded="false" aria-controls="mainMenu">Menu</button>
+        <div id="mainMenu" class="absolute top-full right-5 hidden flex-col gap-7 bg-[#111] p-7 text-sm font-bold uppercase tracking-[.1em] lg:static lg:flex lg:flex-row lg:items-center lg:bg-transparent lg:p-0">
+          <a href="#courses">Academics</a><a href="#about">Admissions</a><a href="#facilities">About us</a><a href="#contact">Contact</a>
+          <button aria-label="Search" id="searchButton"><img src="/assets/ea0d6.svg" alt="" class="size-6" /></button>
+        </div>
+      </nav>
+
+      <div class="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-5 pt-12 text-center md:pt-16">
+        <h1 class="font-condensed text-[clamp(4rem,7vw,8.125rem)] font-bold leading-[.82] tracking-[-.06em] uppercase">Unlock Your<br />Future Success</h1>
+        <p class="mt-8 bg-[#1d157c] px-5 py-3 text-[clamp(.85rem,1.5vw,1.875rem)] tracking-[.2em]">High School Redefined for Success</p>
+      </div>
+
+      <div class="relative z-10 mx-auto mt-14 grid max-w-7xl grid-cols-1 px-5 sm:grid-cols-3 md:px-10">
+        <a href="#courses" class="group overflow-hidden bg-[#1d157c] text-center text-lg md:text-2xl"><img src="/assets/83d8b.png" alt="Students collaborating" class="h-48 w-full object-cover transition duration-500 group-hover:scale-105" /><span class="block p-5">Career-Oriented Curriculum</span></a>
+        <a href="#team" class="group overflow-hidden bg-[#5b7bce] text-center text-lg md:text-2xl"><img src="/assets/af0d7.png" alt="Students learning together" class="h-48 w-full object-cover transition duration-500 group-hover:scale-105" /><span class="block p-5">Skills for Professional Success</span></a>
+        <a href="#about" class="group overflow-hidden bg-[#3c5494] text-center text-lg md:text-2xl"><img src="/assets/1219a.png" alt="Graduating students" class="h-48 w-full object-cover transition duration-500 group-hover:scale-105" /><span class="block p-5">Supportive Environment</span></a>
+      </div>
+    </header>
+
+    <main>
+      <section id="about" class="mx-auto grid max-w-7xl items-stretch lg:grid-cols-[1.1fr_.9fr]">
+        <div class="space-y-8 px-6 py-16 lg:px-0 lg:pr-16">
+          <article class="grid gap-6 sm:grid-cols-[120px_1fr] sm:items-center"><img src="/assets/6ae35.svg" alt="" class="size-24 sm:size-[120px]" /><div><h2 class="mb-2 text-xl font-bold">Featured Programs</h2><p class="text-[19px] font-light leading-[1.54] tracking-[.02em]">Discover our acclaimed programs designed to unlock your child’s potential. From advanced academic courses to a rich tapestry of extracurricular activities, School provides a holistic education that goes beyond the classroom.</p></div></article>
+          <article class="grid gap-6 sm:grid-cols-[120px_1fr] sm:items-center"><img src="/assets/6ae35.svg" alt="" class="size-24 sm:size-[120px]" /><div><h2 class="mb-2 text-xl font-bold">Upcoming Events</h2><p class="text-[19px] font-light leading-[1.54] tracking-[.02em]">Stay connected with our vibrant community through upcoming events. Join us for open houses, student showcases, and interactive webinars to get a firsthand look at the dynamic learning experiences School offers.</p></div></article>
+        </div>
+        <div class="flex flex-col justify-center gap-7 bg-[#1d157c] px-8 py-16 text-white lg:px-14"><h2 class="text-2xl font-semibold">Welcome</h2><p class="text-[19px] leading-[1.54] tracking-[.02em]">Welcome to our school, where excellence meets innovation. Our commitment to fostering academic achievement, personal growth, and community engagement sets us apart. Explore a transformative educational journey that prepares students for a future of limitless possibilities.</p><a href="#founder" class="text-sm font-medium uppercase tracking-[.08em]">Read more about us &gt;&gt;</a></div>
+      </section>
+
+      <section id="courses" class="py-20">
+        <h2 class="mb-12 text-center text-5xl font-semibold capitalize tracking-[.02em]">Our Courses</h2>
+        <div class="grid md:grid-cols-3">
+          <button class="course group bg-[#1d157c] text-white" data-course="Health and Sciences"><img src="/assets/21100.png" alt="Health and sciences classroom" class="h-72 w-full object-cover transition duration-500 group-hover:brightness-75" /><span class="block p-5 text-2xl">Health and Sciences</span></button>
+          <button class="course group bg-[#5b7bce] text-white" data-course="Business Academics"><img src="/assets/87ec8.png" alt="Business academics classroom" class="h-72 w-full object-cover transition duration-500 group-hover:brightness-75" /><span class="block p-5 text-2xl">Business Academics</span></button>
+          <button class="course group bg-[#3c5494] text-white" data-course="History"><img src="/assets/a2218.png" alt="School library" class="h-72 w-full object-cover transition duration-500 group-hover:brightness-75" /><span class="block p-5 text-2xl">History</span></button>
+        </div>
+      </section>
+
+      <section id="facilities" class="relative grid gap-5 bg-white py-5 md:grid-cols-2">
+        <img src="/assets/f54b4.png" alt="School library" class="h-[330px] w-full object-cover md:h-[400px]" />
+        <img src="/assets/3b993.png" alt="Modern computer lab" class="h-[330px] w-full object-cover md:h-[400px]" />
+        <img src="/assets/ee7c7.png" alt="School building" class="h-[330px] w-full object-cover md:h-[400px]" />
+        <img src="/assets/77de9.png" alt="Collaborative classroom" class="h-[330px] w-full object-cover md:h-[400px]" />
+        <div class="md:absolute md:top-1/2 md:left-1/2 w-full bg-[#fbb911] p-10 md:w-[560px] md:-translate-x-1/2 md:-translate-y-1/2 md:p-14"><h2 class="mb-7 text-5xl font-semibold">Our Facilities</h2><p class="text-[19px] leading-[1.54] tracking-[.02em]">Immerse yourself in a conducive learning environment with our top-notch facilities. State-of-the-art laboratories, extensive libraries, and modern classrooms create a setting where curiosity and exploration flourish.</p></div>
+      </section>
+
+      <section id="team" class="relative overflow-hidden py-20">
+        <img src="/assets/6a3bf.svg" alt="" class="pointer-events-none absolute -left-8 top-8 -z-10 h-[560px] opacity-60" />
+        <h2 class="mb-12 px-5 text-center font-inter text-[40px] font-semibold">Meet our team of dedicated educators</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-5">
+          <article class="bg-[#1d157c] text-white"><img src="/assets/1b1e3.png" alt="Anita Lee" class="h-[300px] w-full object-cover" /><div class="flex justify-between p-4 font-inter text-sm"><strong>Anita lee</strong><span>Art Director</span></div></article>
+          <article class="bg-[#5b7bce] text-white"><img src="/assets/92573.png" alt="Bruce Smith" class="h-[300px] w-full object-cover" /><div class="flex justify-between p-4 font-inter text-sm"><strong>Bruce Smith</strong><span>Art Director</span></div></article>
+          <article class="bg-[#1d157c] text-white"><img src="/assets/e92c3.png" alt="Jack Nicholson" class="h-[300px] w-full object-cover" /><div class="flex justify-between p-4 font-inter text-sm"><strong>Jack Nicholson</strong><span>Art Director</span></div></article>
+          <article class="bg-[#5b7bce] text-white"><img src="/assets/38afb.png" alt="Calvin" class="h-[300px] w-full object-cover" /><div class="flex justify-between p-4 font-inter text-sm"><strong>Calvin</strong><span>Art Director</span></div></article>
+          <article class="bg-[#1d157c] text-white sm:col-span-2 lg:col-span-1"><img src="/assets/923cd.png" alt="Anita Lee" class="h-[300px] w-full object-cover" /><div class="flex justify-between p-4 font-inter text-sm"><strong>Anita lee</strong><span>Art Director</span></div></article>
+        </div>
+      </section>
+
+      <section id="founder" class="relative mx-auto grid max-w-7xl items-center gap-20 px-6 py-20 lg:grid-cols-[460px_1fr]">
+        <img src="/assets/8be60.svg" alt="" class="pointer-events-none absolute right-0 top-0 -z-10 h-[500px] opacity-40" />
+        <div class="relative max-w-[460px]"><img src="/assets/30aef.png" alt="Joseph Panda, principal" class="h-[520px] w-[360px] object-cover" /><img src="/assets/68db2.png" alt="The principal speaking on campus" class="absolute right-0 bottom-14 h-[165px] w-[266px] border-[10px] border-white object-cover" /></div>
+        <div><blockquote class="text-[clamp(2rem,3vw,2.25rem)] font-light leading-[1.6]">At our School, we aim to empower students with the skills, knowledge, and values needed for success in a global context.</blockquote><div class="mt-8 flex items-start justify-between"><p class="text-2xl leading-[1.6]"><strong>Joseph Panda</strong><br />Principal</p><span class="font-signature text-8xl" aria-hidden="true">JP</span></div></div>
+      </section>
+
+      <section class="bg-[#e3ebff] px-6 py-20">
+        <div class="mx-auto max-w-7xl">
+          <h2 class="mb-14 text-center text-5xl font-semibold">What Our Students Say</h2>
+          <div id="reviews" class="grid gap-12 md:grid-cols-3">
+            <article><p class="text-[19px] font-light leading-[1.54] tracking-[.02em]">“We provide students with timely and tailored support &amp; services. We offer culturally sensitive and engaged teach learning and assessment needs.”</p><h3 class="mt-6 text-2xl font-extrabold uppercase">Steve Martin</h3><p class="text-sm font-medium uppercase tracking-[.12em]">Humanities</p></article>
+            <article><p class="text-[19px] font-light leading-[1.54] tracking-[.02em]">“We provide students with timely and tailored support &amp; services. We offer culturally sensitive and engaged teach learning and assessment needs.”</p><h3 class="mt-6 text-2xl font-extrabold uppercase">Geoffrey</h3><p class="text-sm font-medium uppercase tracking-[.12em]">Arts and commerce</p></article>
+            <article><p class="text-[19px] font-light leading-[1.54] tracking-[.02em]">“We provide students with timely and tailored support &amp; services. We offer culturally sensitive and engaged teach learning and assessment needs.”</p><h3 class="mt-6 text-2xl font-extrabold uppercase">Joe Shelf</h3><p class="text-sm font-medium uppercase tracking-[.12em]">Humanities</p></article>
+          </div>
+          <button id="reviewControl" class="mx-auto mt-12 block" aria-label="Show next student review"><img src="/assets/1a16f.svg" alt="" class="h-[14px] w-[62px]" /></button>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="bg-[#111] px-6 py-10 text-center text-sm text-white"><p>Glory High School · Excellence meets innovation</p></footer>
+
+    <dialog id="courseDialog" class="m-auto w-[min(90vw,520px)] bg-white p-0 backdrop:bg-black/60"><div class="p-8"><button id="closeDialog" class="float-right text-2xl" aria-label="Close">×</button><h2 id="dialogTitle" class="text-3xl font-semibold"></h2><p class="mt-4 text-lg leading-relaxed">Explore a future-focused curriculum, experienced educators, and practical learning designed to help every student thrive.</p><a href="#contact" class="mt-6 inline-block bg-[#1d157c] px-5 py-3 text-white" onclick="document.getElementById('courseDialog').close()">Ask about this course</a></div></dialog>
+    <script type="module">
+      const menuButton = document.querySelector('#menuButton');
+      const menu = document.querySelector('#mainMenu');
+      menuButton.addEventListener('click', () => {
+        const open = menu.classList.toggle('hidden');
+        menuButton.setAttribute('aria-expanded', String(!open));
+      });
+      menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+        if (innerWidth < 1024) menu.classList.add('hidden');
+      }));
+      const dialog = document.querySelector('#courseDialog');
+      document.querySelectorAll('.course').forEach((button) => button.addEventListener('click', () => {
+        document.querySelector('#dialogTitle').textContent = button.dataset.course;
+        dialog.showModal();
+      }));
+      document.querySelector('#closeDialog').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+      document.querySelector('#searchButton').addEventListener('click', () => document.querySelector('#courses').scrollIntoView());
+      document.querySelector('#reviewControl').addEventListener('click', () => {
+        const reviews = document.querySelector('#reviews');
+        reviews.append(reviews.firstElementChild);
+      });
+    </script>
+  </body>
+</html>

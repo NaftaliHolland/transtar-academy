@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags core_tags %}
+{% block content %}
+  <div class="mx-auto max-w-7xl px-6 py-16 md:py-20">
+    <nav aria-label="Filter news by category" class="mb-12"><ul class="flex flex-wrap gap-3">
+      <li><a href="{% filter_url category='' tag='' %}" class="block px-4 py-2 font-medium {% if not active_category and not active_tag %}bg-navy text-white{% else %}bg-mist hover:bg-gold{% endif %}" {% if not active_category and not active_tag %}aria-current="true"{% endif %}>All</a></li>
+      {% for category in categories %}<li><a href="{% filter_url category=category.slug tag='' %}" class="block px-4 py-2 font-medium {% if active_category == category %}bg-navy text-white{% else %}bg-mist hover:bg-gold{% endif %}" {% if active_category == category %}aria-current="true"{% endif %}>{{ category.name }}</a></li>{% endfor %}
+    </ul></nav>
+    {% if active_tag %}<p class="mb-8 text-lg">Showing articles tagged <strong>{{ active_tag }}</strong>. <a href="{% filter_url tag='' %}" class="underline underline-offset-4">Clear</a></p>{% endif %}
+
+    {% if featured %}
+      <article class="relative mb-14 grid bg-navy text-white lg:grid-cols-2">
+        {% if featured.cover_image %}{% image featured.cover_image fill-1000x640 class="h-72 w-full object-cover lg:h-full" %}{% endif %}
+        <div class="flex flex-col justify-center gap-4 p-8 lg:p-14">
+          <p class="text-sm font-medium uppercase tracking-[.12em]">Featured &middot; <time datetime="{{ featured.date|date:'Y-m-d' }}">{{ featured.date|date:"j F Y" }}</time></p>
+          <h2 class="text-3xl font-semibold leading-tight md:text-4xl"><a href="{{ featured.url }}" class="after:absolute after:inset-0 hover:underline hover:underline-offset-4">{{ featured.title }}</a></h2>
+          <p class="text-lg font-light leading-relaxed">{{ featured.intro|truncatewords:40 }}</p>
+        </div>
+      </article>
+    {% endif %}
+
+    {% if page_obj %}
+      <ul class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">{% for article in page_obj %}<li class="relative flex">{% include "includes/news_card.html" %}</li>{% endfor %}</ul>
+      {% include "includes/pagination.html" %}
+    {% elif not featured %}
+      <p class="text-lg font-light">No articles match your selection yet.</p>
+    {% endif %}
+  </div>
+{% endblock %}

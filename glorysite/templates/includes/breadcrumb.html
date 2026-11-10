@@ -1,0 +1,11 @@
+{% load wagtailcore_tags %}
+{% if page and page.depth > 2 %}
+  <nav aria-label="Breadcrumb" class="mb-6 text-sm">
+    <ol class="flex flex-wrap gap-x-2 gap-y-1">
+      {% for ancestor in page.get_ancestors %}{% if ancestor.depth > 1 %}
+        <li class="flex gap-2"><a href="{% pageurl ancestor %}" class="underline underline-offset-4 hover:text-gold">{{ ancestor.title }}</a><span aria-hidden="true">/</span></li>
+      {% endif %}{% endfor %}
+      <li aria-current="page">{{ page.title }}</li>
+    </ol>
+  </nav>
+{% endif %}

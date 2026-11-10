@@ -1,0 +1,4 @@
+<section class="mx-auto max-w-3xl px-6 py-16 md:py-20">
+  {% if value.heading %}<h2 class="mb-8 text-4xl font-semibold">{{ value.heading }}</h2>{% endif %}
+  {% include "includes/faq_items.html" with items=value.items %}
+</section>

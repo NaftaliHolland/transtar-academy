@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags core_tags %}
+{% block page_intro %}
+  <p class="mt-6 text-sm font-medium uppercase tracking-[.12em]"><time datetime="{{ page.date|date:'Y-m-d' }}">{{ page.date|date:"j F Y" }}</time>{% if page.author_name %} &middot; {{ page.author_name }}{% endif %}</p>
+  {% if page.intro %}<p class="mt-4 max-w-3xl text-xl font-light leading-relaxed">{{ page.intro }}</p>{% endif %}
+{% endblock %}
+{% block content %}
+  {% if page.cover_image %}<div class="mx-auto max-w-5xl px-6 pt-12">{% image page.cover_image width-1400 class="h-auto w-full" fetchpriority="high" %}</div>{% endif %}
+  {% include_block page.body %}
+  <div class="mx-auto max-w-3xl px-6 pb-16">
+    {% with categories=page.categories.all tags=page.tags.all %}
+      {% if categories or tags %}
+        <ul class="flex flex-wrap gap-2 border-t border-ink/15 pt-8 text-sm">
+          {% for category in categories %}<li><a href="{{ page.get_parent.url }}?category={{ category.slug }}" class="block bg-mist px-3 py-1 font-medium hover:bg-gold">{{ category.name }}</a></li>{% endfor %}
+          {% for tag in tags %}<li><a href="{{ page.get_parent.url }}?tag={{ tag.slug }}" class="block border border-ink/30 px-3 py-1 hover:bg-gold">#{{ tag.name }}</a></li>{% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <p class="mt-8"><a href="{{ page.get_parent.url }}" class="font-medium underline underline-offset-4">&lt;&lt; Back to all news</a></p>
+  </div>
+{% endblock %}

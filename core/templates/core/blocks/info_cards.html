@@ -1,0 +1,8 @@
+<section class="mx-auto max-w-7xl px-6 py-16 md:py-20">
+  {% if value.heading %}<h2 class="mb-10 text-center text-4xl font-semibold md:text-5xl">{{ value.heading }}</h2>{% endif %}
+  <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {% for card in value.cards %}
+      <li class="border-l-4 border-navy bg-mist p-6"><h3 class="mb-2 text-xl font-bold">{{ card.title }}</h3><p class="font-light leading-relaxed">{{ card.text }}</p></li>
+    {% endfor %}
+  </ul>
+</section>

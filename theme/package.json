@@ -1,0 +1,16 @@
+{
+  "name": "glory-theme",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i src/input.css -o static/theme/css/site.css --minify",
+    "dev": "tailwindcss -i src/input.css -o static/theme/css/site.css --watch",
+    "fonts": "cp node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-700-normal.woff2 node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2 node_modules/@fontsource/mrs-saint-delafield/files/mrs-saint-delafield-latin-400-normal.woff2 static/theme/fonts/"
+  },
+  "devDependencies": {
+    "@fontsource-variable/inter": "^5.1.0",
+    "@fontsource/barlow-condensed": "^5.1.0",
+    "@fontsource/mrs-saint-delafield": "^5.1.0",
+    "@tailwindcss/cli": "^4.1.0",
+    "tailwindcss": "^4.1.0"
+  }
+}

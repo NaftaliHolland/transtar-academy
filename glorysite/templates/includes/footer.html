@@ -1,0 +1,24 @@
+{% load core_tags wagtailimages_tags %}
+<footer id="contact" class="bg-ink px-6 py-14 text-sm text-white md:px-[5vw]">
+  <div class="mx-auto grid max-w-7xl gap-12 md:grid-cols-2 lg:grid-cols-4">
+    <div class="space-y-4">
+      <p class="font-condensed text-3xl font-bold uppercase leading-none">{{ site_settings.school_name }}</p>
+      {% if site_settings.footer_text %}<p class="max-w-xs leading-relaxed text-white/80">{{ site_settings.footer_text }}</p>{% endif %}
+      {% if site_settings.cta_page %}<a href="{{ site_settings.cta_page.url }}" class="inline-block bg-gold px-5 py-3 font-semibold text-ink hover:bg-white">{{ site_settings.cta_text|default:site_settings.cta_page.title }}</a>{% endif %}
+    </div>
+    {% for column in nav_settings.footer_columns %}
+      <nav aria-label="{{ column.value.title }}">
+        <h2 class="mb-4 text-base font-semibold">{{ column.value.title }}</h2>
+        <ul class="space-y-2">{% for link in column.value.links %}{% if link.href %}<li><a href="{{ link.href }}" class="text-white/80 underline-offset-4 hover:text-gold hover:underline">{{ link.text }}</a></li>{% endif %}{% endfor %}</ul>
+      </nav>
+    {% endfor %}
+    <div class="space-y-4">
+      <h2 class="text-base font-semibold">Contact</h2>
+      {% include "includes/contact_lines.html" with tone="dark" %}
+      {% if site_settings.social_links %}
+        <ul class="flex gap-3 pt-2">{% for block in site_settings.social_links %}<li><a href="{{ block.value.url }}" class="block p-1 hover:text-gold" rel="noopener" target="_blank"><span class="sr-only">{% social_label block.value.platform %} (opens in a new tab)</span>{% include "includes/social_icon.html" with platform=block.value.platform %}</a></li>{% endfor %}</ul>
+      {% endif %}
+    </div>
+  </div>
+  <p class="mx-auto mt-12 max-w-7xl border-t border-white/20 pt-6 text-white/70">&copy; {% now "Y" %} {{ site_settings.school_name }}. {{ site_settings.copyright_text }}</p>
+</footer>

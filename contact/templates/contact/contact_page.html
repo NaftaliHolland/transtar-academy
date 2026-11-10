@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% block content %}
+  <div class="mx-auto grid max-w-7xl gap-14 px-6 py-16 md:py-20 lg:grid-cols-[1.2fr_.8fr]">
+    <div>
+      <h2 class="mb-6 text-3xl font-semibold md:text-4xl">Send us a message</h2>
+      {% if sent %}
+        <div class="border-l-4 border-navy bg-mist p-6" role="status" tabindex="-1" id="form-status"><p class="text-lg font-semibold">Message sent</p><p>{{ page.success_message }}</p></div>
+      {% else %}
+        {% if form.errors %}
+          <div class="mb-8 border-l-4 border-[#b00020] bg-[#fdecef] p-5" role="alert" id="form-errors">
+            <p class="font-semibold">Your message was not sent. Fix the following and try again:</p>
+            <ul class="mt-2 list-disc pl-5">
+              {% for error in form.non_field_errors %}<li>{{ error }}</li>{% endfor %}
+              {% for field in form.visible_fields %}{% for error in field.errors %}<li><a href="#{{ field.id_for_label }}" class="underline underline-offset-4">{{ field.label }}: {{ error }}</a></li>{% endfor %}{% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        <form method="post" action="{{ page.url }}" class="space-y-6" novalidate>
+          {% csrf_token %}
+          {{ form.started }}
+          {% include "includes/form_field.html" with field=form.name %}
+          <div class="grid gap-6 md:grid-cols-2">
+            {% include "includes/form_field.html" with field=form.email %}
+            {% include "includes/form_field.html" with field=form.phone %}
+          </div>
+          {% include "includes/form_field.html" with field=form.category %}
+          {% include "includes/form_field.html" with field=form.message %}
+          {# Honeypot: hidden from people, ignored by assistive tech. #}
+          <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true"><label for="{{ form.website.id_for_label }}">{{ form.website.label }}</label><input type="text" name="website" id="{{ form.website.id_for_label }}" tabindex="-1" autocomplete="off" /></div>
+          <button type="submit" class="bg-navy px-8 py-4 font-semibold text-white hover:bg-steel">Send message</button>
+        </form>
+      {% endif %}
+    </div>
+    <aside class="space-y-10" aria-label="School contact details">
+      <div class="bg-mist p-8"><h2 class="mb-5 text-2xl font-bold">Contact details</h2>{% include "includes/contact_lines.html" with show_all=True %}</div>
+      {% include_block page.body %}
+    </aside>
+  </div>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block page_intro %}<p class="mt-4 text-sm font-medium uppercase tracking-[.12em]"><time datetime="{{ page.date|date:'Y-m-d' }}">{{ page.date|date:"F Y" }}</time></p>{% if page.intro %}<p class="mt-4 max-w-3xl text-xl font-light leading-relaxed">{{ page.intro }}</p>{% endif %}{% endblock %}
+{% block content %}
+  <div class="mx-auto max-w-7xl px-6 py-16 md:py-20">
+    {% include "includes/gallery_grid.html" with images=page.gallery_images.all %}
+    <p class="mt-12"><a href="{{ page.get_parent.url }}" class="font-medium underline underline-offset-4">&lt;&lt; All albums</a></p>
+  </div>
+{% endblock %}

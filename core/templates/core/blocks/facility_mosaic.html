@@ -1,0 +1,8 @@
+{% load wagtailimages_tags %}
+<section class="relative grid gap-5 bg-white py-5 md:grid-cols-2">
+  {% for item in value.images %}{% image item fill-960x400 class="h-[330px] w-full object-cover md:h-[400px]" loading="lazy" %}{% endfor %}
+  <div class="w-full bg-gold p-10 text-ink md:absolute md:left-1/2 md:top-1/2 md:w-[560px] md:-translate-x-1/2 md:-translate-y-1/2 md:p-14">
+    <h2 class="mb-7 text-4xl font-semibold md:text-5xl">{{ value.heading }}</h2>
+    <p class="text-[19px] leading-[1.54] tracking-[.02em]">{{ value.text }}</p>
+  </div>
+</section>

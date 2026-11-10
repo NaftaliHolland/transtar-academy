@@ -1,0 +1,12 @@
+<section class="mx-auto max-w-4xl px-6 py-16 md:py-20">
+  {% if value.heading %}<h2 class="mb-10 text-4xl font-semibold md:text-5xl">{{ value.heading }}</h2>{% endif %}
+  <ol class="space-y-8 border-l-4 border-navy pl-6 md:pl-10">
+    {% for item in value.items %}
+      <li class="relative">
+        <p class="mb-1 {% if value.numbered %}text-sm font-bold uppercase tracking-[.12em]{% else %}text-lg font-bold text-navy{% endif %}">{% if value.numbered %}Step {{ forloop.counter }}{% else %}{{ item.label }}{% endif %}</p>
+        <h3 class="text-2xl font-semibold">{{ item.title }}</h3>
+        {% if item.text %}<p class="mt-2 font-light leading-relaxed">{{ item.text }}</p>{% endif %}
+      </li>
+    {% endfor %}
+  </ol>
+</section>

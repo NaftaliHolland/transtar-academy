@@ -1,0 +1,9 @@
+<section class="{% if value.tone == 'gold' %}bg-gold text-ink{% else %}bg-navy text-white{% endif %} px-6 py-16 md:py-20">
+  <div class="mx-auto flex max-w-5xl flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+    <div class="max-w-2xl">
+      <h2 class="text-3xl font-semibold md:text-4xl">{{ value.heading }}</h2>
+      {% if value.text %}<p class="mt-3 text-lg font-light leading-relaxed">{{ value.text }}</p>{% endif %}
+    </div>
+    {% if value.button.has_link %}<a href="{{ value.button.href }}" class="shrink-0 px-6 py-4 font-semibold {% if value.tone == 'gold' %}bg-navy text-white hover:bg-steel{% else %}bg-gold text-ink hover:bg-white{% endif %}">{{ value.button.text }}</a>{% endif %}
+  </div>
+</section>

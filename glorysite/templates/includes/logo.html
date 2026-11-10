@@ -1,0 +1,8 @@
+{% load wagtailimages_tags %}
+<a href="/" class="flex items-center gap-4" aria-label="{{ site_settings.school_name }} home">
+  {% if site_settings.logo %}{% image site_settings.logo height-128 class="h-16 w-auto bg-white" alt="" %}{% endif %}
+  {% comment %}
+  {% if site_settings.logo_wordmark %}{% image site_settings.logo_wordmark height-112 class="h-14 w-auto" alt=site_settings.school_name %}
+  {% else %}<span class="font-condensed text-3xl font-bold uppercase leading-none tracking-tight md:text-4xl">{{ site_settings.school_name }}</span>{% endif %}
+  {% endcomment %}
+</a>

@@ -1,0 +1,11 @@
+<div class="divide-y divide-ink/15 border-y border-ink/15">
+  {% for item in items %}
+    <details class="group py-1">
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-4 text-lg font-semibold [&::-webkit-details-marker]:hidden">
+        {{ item.question }}
+        <svg class="size-5 shrink-0 transition-transform motion-reduce:transition-none group-open:rotate-45" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3v14M3 10h14" /></svg>
+      </summary>
+      <div class="rich-text pb-5">{{ item.answer }}</div>
+    </details>
+  {% endfor %}
+</div>

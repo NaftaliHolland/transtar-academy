@@ -1,0 +1,11 @@
+{% load core_tags %}
+<div class="relative z-30 h-10 items-center justify-between bg-ink px-5 text-xs text-white md:px-[5vw] hidden sm:flex">
+  <ul class="flex items-center gap-4">
+    {% for block in site_settings.social_links %}
+      <li><a href="{{ block.value.url }}" class="block p-1 hover:text-gold" rel="noopener" target="_blank"><span class="sr-only">{% social_label block.value.platform %} (opens in a new tab)</span>{% include "includes/social_icon.html" with platform=block.value.platform %}</a></li>
+    {% endfor %}
+  </ul>
+  <ul class="flex gap-7">
+    {% for block in nav_settings.utility_menu %}{% if block.value.href %}<li><a href="{{ block.value.href }}" class="hover:text-gold">{{ block.value.text }}</a></li>{% endif %}{% endfor %}
+  </ul>
+</div>

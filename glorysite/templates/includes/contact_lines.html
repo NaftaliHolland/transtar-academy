@@ -1,0 +1,10 @@
+{# Contact details from global Site settings. Used by the footer, contact page and contact block. #}
+<dl class="space-y-3 {% if tone == 'dark' %}text-white/80{% endif %}">
+  {% if site_settings.phone %}<div><dt class="font-semibold">Phone</dt><dd><a href="tel:{{ site_settings.phone|cut:' ' }}" class="underline underline-offset-4 hover:text-gold">{{ site_settings.phone }}</a></dd></div>{% endif %}
+  {% if site_settings.email %}<div><dt class="font-semibold">Email</dt><dd><a href="mailto:{{ site_settings.email }}" class="underline underline-offset-4 hover:text-gold">{{ site_settings.email }}</a></dd></div>{% endif %}
+  {% if site_settings.admissions_email and show_all %}<div><dt class="font-semibold">Admissions</dt><dd><a href="mailto:{{ site_settings.admissions_email }}" class="underline underline-offset-4 hover:text-gold">{{ site_settings.admissions_email }}</a></dd></div>{% endif %}
+  {% if site_settings.physical_address %}<div><dt class="font-semibold">Visit us</dt><dd class="whitespace-pre-line">{{ site_settings.physical_address }}</dd></div>{% endif %}
+  {% if site_settings.postal_address and show_all %}<div><dt class="font-semibold">Postal address</dt><dd class="whitespace-pre-line">{{ site_settings.postal_address }}</dd></div>{% endif %}
+  {% if site_settings.office_hours_lines and show_all %}<div><dt class="font-semibold">Office hours</dt><dd>{% for line in site_settings.office_hours_lines %}{{ line }}{% if not forloop.last %}<br />{% endif %}{% endfor %}</dd></div>{% endif %}
+  {% if site_settings.map_url and show_all %}<div><dt class="sr-only">Map</dt><dd><a href="{{ site_settings.map_url }}" rel="noopener" target="_blank" class="font-semibold underline underline-offset-4 hover:text-gold">View on a map<span class="sr-only"> (opens in a new tab)</span></a></dd></div>{% endif %}
+</dl>

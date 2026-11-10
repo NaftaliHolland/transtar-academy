@@ -1,0 +1,5 @@
+{% load wagtailimages_tags %}
+<section class="mx-auto max-w-7xl px-6 py-16 md:py-20">
+  {% if value.heading %}<h2 class="mb-10 text-center text-4xl font-semibold md:text-5xl">{{ value.heading }}</h2>{% endif %}
+  {% include "includes/gallery_grid.html" with images=value.images %}
+</section>

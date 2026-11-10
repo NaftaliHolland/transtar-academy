@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="mx-auto max-w-7xl px-6 py-16 md:py-20">
+    <nav aria-label="Event timeframe" class="mb-12"><ul class="flex gap-3">
+      <li><a href="{{ page.url }}" class="block px-5 py-2 font-medium {% if not showing_past %}bg-navy text-white{% else %}bg-mist hover:bg-gold{% endif %}" {% if not showing_past %}aria-current="true"{% endif %}>Upcoming</a></li>
+      <li><a href="{{ page.url }}?when=past" class="block px-5 py-2 font-medium {% if showing_past %}bg-navy text-white{% else %}bg-mist hover:bg-gold{% endif %}" {% if showing_past %}aria-current="true"{% endif %}>Past events</a></li>
+    </ul></nav>
+    {% if page_obj %}
+      <ul class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">{% for event in page_obj %}<li class="relative flex">{% include "includes/event_card.html" %}</li>{% endfor %}</ul>
+      {% include "includes/pagination.html" %}
+    {% else %}
+      <p class="text-lg font-light">{% if showing_past %}There are no past events to show.{% else %}There are no upcoming events right now. Please check back soon.{% endif %}</p>
+    {% endif %}
+  </div>
+{% endblock %}

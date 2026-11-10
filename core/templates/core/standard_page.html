@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% block header_media %}
+  {% if page.header_image %}{% image page.header_image width-1920 class="absolute inset-0 -z-10 h-full w-full object-cover" fetchpriority="high" %}<div class="absolute inset-0 -z-10 bg-black/50"></div>{% endif %}
+{% endblock %}
+{% block content %}{% include_block page.body %}{% endblock %}

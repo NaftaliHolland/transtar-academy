@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% block page_intro %}
+  <p class="mt-6 text-lg font-medium"><time datetime="{{ page.start_datetime|date:'c' }}">{{ page.start_datetime|date:"l, j F Y \a\t g:i A" }}</time>{% if page.end_datetime %} to <time datetime="{{ page.end_datetime|date:'c' }}">{% if page.spans_days %}{{ page.end_datetime|date:"l, j F Y \a\t g:i A" }}{% else %}{{ page.end_datetime|date:"g:i A" }}{% endif %}</time>{% endif %}</p>
+  {% if page.location %}<p class="mt-1 text-lg">{{ page.location }}</p>{% endif %}
+  {% if not page.is_upcoming %}<p class="mt-4 inline-block bg-gold px-3 py-1 text-sm font-semibold text-ink">This event has ended</p>{% endif %}
+{% endblock %}
+{% block content %}
+  <div class="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1fr_320px]">
+    <div>
+      {% if page.image %}{% image page.image width-1200 class="mb-10 h-auto w-full" fetchpriority="high" %}{% endif %}
+      <p class="mb-8 text-xl font-light leading-relaxed">{{ page.summary }}</p>
+      {% include_block page.body %}
+    </div>
+    <aside class="h-fit bg-mist p-6" aria-label="Event details">
+      <h2 class="mb-4 text-xl font-bold">Details</h2>
+      <dl class="space-y-3">
+        <div><dt class="font-semibold">Starts</dt><dd>{{ page.start_datetime|date:"j F Y, g:i A" }}</dd></div>
+        {% if page.end_datetime %}<div><dt class="font-semibold">Ends</dt><dd>{{ page.end_datetime|date:"j F Y, g:i A" }}</dd></div>{% endif %}
+        {% if page.location %}<div><dt class="font-semibold">Where</dt><dd>{{ page.location }}</dd></div>{% endif %}
+      </dl>
+      {% if page.registration_url and page.is_upcoming %}<a href="{{ page.registration_url }}" rel="noopener" class="mt-6 block bg-navy px-5 py-3 text-center font-semibold text-white hover:bg-steel">{{ page.registration_label|default:"Register" }}</a>{% endif %}
+      <p class="mt-6"><a href="{{ page.get_parent.url }}" class="font-medium underline underline-offset-4">&lt;&lt; All events</a></p>
+    </aside>
+  </div>
+{% endblock %}

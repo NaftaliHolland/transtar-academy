@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block page_heading %}Search{% endblock %}
+{% block page_intro %}
+  <form action="{% url 'search' %}" method="get" role="search" class="mt-8 flex max-w-xl gap-2">
+    <label for="query" class="sr-only">Search the site</label>
+    <input type="search" name="query" id="query" value="{{ search_query|default:'' }}" class="w-full border border-white bg-white px-4 py-3 text-ink" placeholder="Search the site" />
+    <button type="submit" class="bg-gold px-6 py-3 font-semibold text-ink hover:bg-white">Search</button>
+  </form>
+{% endblock %}
+{% block content %}
+  <div class="mx-auto max-w-3xl px-6 py-16">
+    {% if search_query %}
+      <h2 class="mb-8 text-2xl font-semibold">{{ search_results.paginator.count }} result{{ search_results.paginator.count|pluralize }} for &ldquo;{{ search_query }}&rdquo;</h2>
+      <ul class="divide-y divide-ink/15 border-y border-ink/15">
+        {% for result in search_results %}
+          <li class="py-5"><h3 class="text-xl font-semibold"><a href="{{ result.url }}" class="underline-offset-4 hover:underline">{{ result.title }}</a></h3>{% if result.search_description %}<p class="mt-1 font-light">{{ result.search_description }}</p>{% endif %}</li>
+        {% empty %}
+          <li class="py-5 font-light">Nothing matched. Try different words or check the spelling.</li>
+        {% endfor %}
+      </ul>
+      {% with page_obj=search_results %}{% include "includes/pagination.html" %}{% endwith %}
+    {% else %}
+      <p class="text-lg font-light">Enter a word or phrase to search the website.</p>
+    {% endif %}
+  </div>
+{% endblock %}

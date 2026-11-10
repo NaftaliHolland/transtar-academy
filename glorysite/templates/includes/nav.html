@@ -1,0 +1,31 @@
+{% load core_tags %}
+<nav class="relative z-30 mx-auto flex max-w-[1740px] items-center justify-between px-5 py-7 md:px-[5vw]" aria-label="Main navigation">
+  {% include "includes/logo.html" %}
+  <button id="menuButton" type="button" class="rounded border border-white/50 px-3 py-2 text-sm uppercase tracking-widest lg:hidden" aria-expanded="false" aria-controls="mainMenu">Menu</button>
+  <div id="mainMenu" class="absolute right-5 top-full hidden max-h-[80vh] w-[min(20rem,calc(100vw-2.5rem))] overflow-y-auto bg-ink p-7 text-sm font-bold uppercase tracking-[.1em] lg:static lg:flex lg:max-h-none lg:w-auto lg:items-center lg:gap-7 lg:overflow-visible lg:bg-transparent lg:p-0">
+    <ul class="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-7">
+      {% for block in nav_settings.header_menu %}
+        {% with item=block.value %}
+          {% is_current item.href as current %}
+          <li class="group/item relative">
+            <div class="flex items-center gap-1">
+              {% if item.href %}<a href="{{ item.href }}" class="{% if current %}border-b-2 border-gold{% endif %} py-1 hover:text-gold" {% if current %}aria-current="page"{% endif %}>{{ item.text }}</a>{% else %}<span class="py-1">{{ item.text }}</span>{% endif %}
+              {% if item.children %}
+                <button type="button" data-submenu-toggle aria-expanded="false" class="p-1 hover:text-gold"><span class="sr-only">Show {{ item.text }} submenu</span>
+                  <svg class="size-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 4l4 4 4-4" /></svg></button>
+              {% endif %}
+            </div>
+            {% if item.children %}
+              <ul class="mt-4 hidden flex-col gap-3 border-l border-white/30 pl-4 text-[13px] normal-case tracking-normal group-data-[open]/item:flex lg:absolute lg:left-0 lg:top-full lg:z-40 lg:mt-3 lg:min-w-56 lg:border-0 lg:bg-ink lg:p-5 lg:group-hover/item:flex">
+                {% for child in item.children %}{% if child.href %}<li><a href="{{ child.href }}" class="block py-1 font-semibold hover:text-gold">{{ child.text }}</a></li>{% endif %}{% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endwith %}
+      {% endfor %}
+    </ul>
+    <a href="{% url 'search' %}" class="mt-6 inline-block hover:text-gold lg:mt-0" aria-label="Search the site">
+      <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+    </a>
+  </div>
+</nav>

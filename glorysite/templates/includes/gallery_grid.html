@@ -1,0 +1,15 @@
+{% load wagtailimages_tags %}
+<ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+  {% for entry in images %}
+    {% image entry.image max-1600x1600 as large %}
+    <li>
+      <figure>
+        <a href="{{ large.url }}" data-lightbox data-caption="{{ entry.caption }}" data-alt="{{ entry.image.default_alt_text }}" class="group block overflow-hidden bg-navy">
+          {% image entry.image fill-640x480 class="h-64 w-full object-cover transition duration-500 motion-reduce:transition-none group-hover:scale-105" loading="lazy" %}
+          <span class="sr-only">View larger</span>
+        </a>
+        {% if entry.caption %}<figcaption class="mt-2 text-sm font-light">{{ entry.caption }}</figcaption>{% endif %}
+      </figure>
+    </li>
+  {% endfor %}
+</ul>

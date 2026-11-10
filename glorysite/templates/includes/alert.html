@@ -1,0 +1,9 @@
+{% if site_settings.alert_message %}
+  <div id="alertBar" data-alert-id="{{ site_settings.alert_message|slugify|truncatechars:24 }}" class="relative z-30 bg-gold px-5 py-2 text-center text-sm font-medium text-ink md:px-[5vw]" role="region" aria-label="Announcement">
+    <p class="pr-8">
+      {{ site_settings.alert_message }}
+      {% if site_settings.alert_link_page %}<a href="{{ site_settings.alert_link_page.url }}" class="ml-1 font-bold underline underline-offset-4">{{ site_settings.alert_link_text|default:site_settings.alert_link_page.title }}</a>{% endif %}
+    </p>
+    <button type="button" data-alert-dismiss class="absolute right-3 top-1/2 -translate-y-1/2 px-2 text-xl leading-none" aria-label="Dismiss announcement">&times;</button>
+  </div>
+{% endif %}

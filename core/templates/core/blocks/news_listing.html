@@ -1,0 +1,5 @@
+<section class="mx-auto max-w-7xl px-6 py-16 md:py-20">
+  <div class="mb-10 flex flex-wrap items-end justify-between gap-4"><h2 class="text-4xl font-semibold md:text-5xl">{{ value.heading }}</h2>{% if index_page %}<a href="{{ index_page.url }}" class="font-medium uppercase tracking-[.08em] underline underline-offset-4">All news &gt;&gt;</a>{% endif %}</div>
+  {% if articles %}<ul class="grid gap-8 md:grid-cols-3">{% for article in articles %}<li class="relative">{% include "includes/news_card.html" %}</li>{% endfor %}</ul>
+  {% else %}<p class="text-lg font-light">No news has been published yet.</p>{% endif %}
+</section>

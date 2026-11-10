@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-home{% endblock %}
+
+{% block header %}
+  <header id="home" class="relative isolate min-h-[760px] bg-black text-white">
+    {% if page.hero_image %}{% image page.hero_image width-1920 class="absolute inset-0 -z-10 h-full w-full object-cover" fetchpriority="high" %}{% endif %}
+    <div class="absolute inset-0 -z-10 bg-black/25"></div>
+    {% include "includes/topbar.html" %}
+    {% include "includes/nav.html" %}
+
+    <div class="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-5 pt-12 text-center md:pt-16">
+      <h1 class="font-condensed text-[clamp(4rem,7vw,8.125rem)] font-bold uppercase leading-[.82] tracking-[-.06em]">{% for line in page.hero_heading_lines %}{{ line }}{% if not forloop.last %}<br />{% endif %}{% endfor %}</h1>
+      {% if page.hero_tagline %}<p class="mt-8 bg-navy px-5 py-3 text-[clamp(.85rem,1.5vw,1.875rem)] tracking-[.2em]">{{ page.hero_tagline }}</p>{% endif %}
+    </div>
+
+    {% comment %}
+    {% if page.hero_tiles %}
+      <ul class="relative z-10 mx-auto mt-14 grid max-w-7xl grid-cols-1 px-5 sm:grid-cols-3 md:px-10">
+        {% for block in page.hero_tiles %}
+          {% cycle 'bg-navy' 'bg-periwinkle-deep' 'bg-steel' as tone silent %}
+          {% with tile=block.value %}
+            <li class="{{ tone }}">
+              {% if tile.link.has_link %}<a href="{{ tile.link.href }}" class="group block overflow-hidden text-center text-lg md:text-2xl">{% else %}<div class="group overflow-hidden text-center text-lg md:text-2xl">{% endif %}
+                {% image tile.image fill-640x384 class="h-48 w-full object-cover transition duration-500 motion-reduce:transition-none group-hover:scale-105" %}
+                <span class="block p-5">{{ tile.title }}</span>
+              {% if tile.link.has_link %}</a>{% else %}</div>{% endif %}
+            </li>
+          {% endwith %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% endcomment %}
+  </header>
+{% endblock %}
+
+{% block content %}{% include_block page.body %}{% endblock %}

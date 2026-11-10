@@ -1,0 +1,13 @@
+{% load wagtailimages_tags %}
+<section class="{{ value.surface }}">
+  <div class="mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 md:py-20 lg:grid-cols-2 lg:gap-16">
+    <div class="{% if value.image_position == 'right' %}lg:order-2{% endif %}">
+      {% image value.image fill-900x680 class="h-auto w-full object-cover" loading="lazy" %}
+    </div>
+    <div>
+      <h2 class="mb-6 text-3xl font-semibold tracking-[.02em] md:text-4xl">{{ value.heading }}</h2>
+      <div class="rich-text">{{ value.text }}</div>
+      {% if value.button.has_link %}<a href="{{ value.button.href }}" class="mt-8 inline-block px-5 py-3 font-medium {{ value.button_classes }}">{{ value.button.text }}</a>{% endif %}
+    </div>
+  </div>
+</section>

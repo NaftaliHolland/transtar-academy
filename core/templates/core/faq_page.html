@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags core_tags %}
+{% block extra_head %}
+  {% if page.categories %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for cat in page.categories %}{% for item in cat.value.items %}{"@type":"Question","name":{{ item.question|json_script_safe }},"acceptedAnswer":{"@type":"Answer","text":{{ item.answer|json_script_safe }}}}{% if not forloop.last or not forloop.parentloop.last %},{% endif %}{% endfor %}{% endfor %}]}</script>{% endif %}
+{% endblock %}
+{% block content %}
+  <div class="mx-auto max-w-3xl px-6 py-16 md:py-20">
+    {% if page.categories|length > 1 %}
+      <nav aria-label="Question categories" class="mb-12"><ul class="flex flex-wrap gap-3">{% for cat in page.categories %}<li><a href="#faq-{{ forloop.counter }}" class="block bg-mist px-4 py-2 font-medium hover:bg-gold">{{ cat.value.title }}</a></li>{% endfor %}</ul></nav>
+    {% endif %}
+    {% for cat in page.categories %}
+      <section id="faq-{{ forloop.counter }}" class="mb-14"><h2 class="mb-6 text-3xl font-semibold">{{ cat.value.title }}</h2>{% include "includes/faq_items.html" with items=cat.value.items %}</section>
+    {% empty %}
+      <p class="text-lg font-light">Questions and answers will appear here soon.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

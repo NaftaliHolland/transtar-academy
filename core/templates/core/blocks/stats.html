@@ -1,0 +1,8 @@
+<section class="bg-navy px-6 py-16 text-white">
+  <div class="mx-auto max-w-7xl">
+    {% if value.heading %}<h2 class="mb-10 text-center text-3xl font-semibold md:text-4xl">{{ value.heading }}</h2>{% endif %}
+    <dl class="grid gap-10 text-center sm:grid-cols-2 lg:grid-flow-col lg:auto-cols-fr">
+      {% for stat in value.stats %}<div><dd class="order-first font-condensed text-6xl font-bold md:text-7xl">{{ stat.value }}</dd><dt class="mt-2 text-lg">{{ stat.label }}</dt></div>{% endfor %}
+    </dl>
+  </div>
+</section>

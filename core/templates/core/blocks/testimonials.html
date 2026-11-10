@@ -1,0 +1,19 @@
+<section class="bg-mist px-6 py-16 md:py-20" data-carousel>
+  <div class="mx-auto max-w-7xl">
+    <h2 class="mb-14 text-center text-4xl font-semibold md:text-5xl">{{ value.heading }}</h2>
+    <div class="grid gap-12 md:grid-cols-3" data-carousel-list data-visible="3">
+      {% for item in value.items %}
+        <figure data-name="{{ item.name }}" {% if forloop.counter > 3 %}hidden{% endif %}>
+          <blockquote class="text-[19px] font-light leading-[1.54] tracking-[.02em]"><p>&ldquo;{{ item.quote }}&rdquo;</p></blockquote>
+          <figcaption class="mt-6"><span class="block text-2xl font-extrabold uppercase">{{ item.name }}</span>{% if item.detail %}<span class="block text-sm font-medium uppercase tracking-[.12em]">{{ item.detail }}</span>{% endif %}</figcaption>
+        </figure>
+      {% endfor %}
+    </div>
+    {% if value.items|length > 1 %}
+      <button type="button" data-carousel-next class="mx-auto mt-12 block p-3" aria-label="Show next student review">
+        <svg class="h-[14px] w-[62px]" viewBox="0 0 62 14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M0 7h60M54 1l7 6-7 6" /></svg>
+      </button>
+      <p class="sr-only" aria-live="polite" data-carousel-status></p>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,9 @@
+{% load wagtailimages_tags %}
+<article class="group flex flex-col bg-mist">
+  {% if article.cover_image %}{% image article.cover_image fill-640x400 class="h-48 w-full object-cover" loading="lazy" %}{% else %}<div class="h-48 bg-navy" aria-hidden="true"></div>{% endif %}
+  <div class="flex flex-1 flex-col gap-3 p-6">
+    <p class="text-sm font-medium uppercase tracking-[.12em]"><time datetime="{{ article.date|date:'Y-m-d' }}">{{ article.date|date:"j M Y" }}</time>{% for category in article.categories.all|slice:":1" %} &middot; {{ category.name }}{% endfor %}</p>
+    <h3 class="text-xl font-semibold leading-snug"><a href="{{ article.url }}" class="after:absolute after:inset-0 hover:underline hover:underline-offset-4">{{ article.title }}</a></h3>
+    <p class="font-light leading-relaxed">{{ article.intro|truncatewords:28 }}</p>
+  </div>
+</article>

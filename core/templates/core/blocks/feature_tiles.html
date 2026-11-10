@@ -1,0 +1,17 @@
+<section class="py-16 md:py-20">
+  {% if value.heading %}<h2 class="mb-12 px-5 text-center text-4xl font-semibold capitalize tracking-[.02em] md:text-5xl">{{ value.heading }}</h2>{% endif %}
+  <ul class="grid md:grid-cols-3">
+    {% for tile in value.tiles %}
+      {% cycle 'bg-navy' 'bg-periwinkle-deep' 'bg-steel' as tone silent %}
+      <li class="{{ tone }} text-white">
+        {% if tile.description %}
+          <button type="button" class="group block w-full text-center" data-dialog-title="{{ tile.title }}" data-dialog-text="{{ tile.description }}" {% if tile.link.has_link %}data-dialog-href="{{ tile.link.href }}" data-dialog-link-text="{{ tile.link.text|default:'Learn more' }}"{% endif %} aria-haspopup="dialog">{% include "core/blocks/_tile_body.html" %}</button>
+        {% elif tile.link.has_link %}
+          <a href="{{ tile.link.href }}" class="group block text-center">{% include "core/blocks/_tile_body.html" %}</a>
+        {% else %}
+          <div class="group text-center">{% include "core/blocks/_tile_body.html" %}</div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>

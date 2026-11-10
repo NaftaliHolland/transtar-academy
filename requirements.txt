@@ -1,0 +1,8 @@
+Django>=5.2,<5.3
+wagtail>=7.0,<7.1
+psycopg[binary]>=3.2
+dj-database-url>=2.2
+whitenoise>=6.7
+gunicorn>=22
+# Optional: shared cache for rate limiting across workers (set REDIS_URL)
+# redis>=5
