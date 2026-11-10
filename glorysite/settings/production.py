@@ -1,6 +1,6 @@
 from django.core.exceptions import ImproperlyConfigured
 
-from .base import *  # noqa
+from .base import *
 
 DEBUG = False
 

@@ -1,8 +1,12 @@
 """Base settings shared by every environment. Secrets and hosts come from the environment."""
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 import dj_database_url
+
+
+load_dotenv()
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = PROJECT_DIR.parent
@@ -18,7 +22,6 @@ def env_bool(name, default=False):
 
 def env_list(name, default=""):
     return [v.strip() for v in os.environ.get(name, default).split(",") if v.strip()]
-
 
 # Application definition
 INSTALLED_APPS = [
